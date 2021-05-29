@@ -1,7 +1,7 @@
 # Личный проект «Кекстаграм»
 
 * Студент: [Aleksey Titov](https://up.htmlacademy.ru/javascript/23/user/1679727).
-* Наставник: `Неизвестно`.
+* Наставник: [Андрей Карякин](https://up.htmlacademy.ru/javascript/23/user/133011).
 
 ---
 
