@@ -12,7 +12,7 @@ function getRandomInRange(numberFirst, numberSecond) {
 }
 
 function textLenghChecker(anyText, textLengh) {
-  return textLengh > anyText.length;
+  return textLengh >= anyText.length;
 }
 
 try {
