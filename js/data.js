@@ -17,7 +17,7 @@ import {
   MAX_LIKES,
   MIN_COMMENTS,
   MAX_COMMENTS
-} from './constants';
+} from './constants.js';
 
 const getPhotoUrl = (index) => `${BASE_IMAGE_PATH}/${index}.jpg`;
 const getAvatarUrl = (index) => `${BASE_AVATAR_PATH}/avatar-${index}.svg`;
