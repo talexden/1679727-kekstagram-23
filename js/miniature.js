@@ -3,9 +3,8 @@ const pictureTemplate = document.querySelector('#picture').content;
 
 
 const removePictures = () => {
-  while (pictures.querySelector('.picture')) {
-    pictures.removeChild(pictures.querySelector('.picture'));
-  }
+  const miniatures = pictures.querySelectorAll('.picture');
+  miniatures.forEach((element) => pictures.removeChild(element));
 };
 
 
