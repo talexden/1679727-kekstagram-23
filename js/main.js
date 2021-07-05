@@ -4,8 +4,9 @@ import {fillBy} from './utils.js';
 
 import {getRandomPicture} from './data.js';
 
+import {getMiniatures} from './miniature.js';
+
 
 const photos = fillBy(MAX_PHOTOS, getRandomPicture);
 
-// eslint-disable-next-line no-console
-console.log(photos);
+getMiniatures(photos);
