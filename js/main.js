@@ -6,7 +6,10 @@ import {getRandomPicture} from './data.js';
 
 import {getMiniatures} from './miniature.js';
 
+import {showBigPicture} from './big-picture.js';
 
 const photos = fillBy(MAX_PHOTOS, getRandomPicture);
 
 getMiniatures(photos);
+
+showBigPicture();
