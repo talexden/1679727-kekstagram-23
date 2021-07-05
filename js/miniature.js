@@ -1,9 +1,15 @@
 const pictures = document.querySelector('.pictures');
 const pictureTemplate = document.querySelector('#picture').content;
-const fragment = document.createDocumentFragment();
 
 
-const getFragmentItem = ({likes, comments, url}) => {
+const removePictures = () => {
+  while (pictures.querySelector('.picture')) {
+    pictures.removeChild(pictures.querySelector('.picture'));
+  }
+};
+
+
+const renderPhoto = ({likes, comments, url}) => {
   const picture = pictureTemplate.cloneNode(true);
   const pictureImg = picture.querySelector('.picture__img');
   const pictureLikes = picture.querySelector('.picture__likes');
@@ -12,12 +18,14 @@ const getFragmentItem = ({likes, comments, url}) => {
   pictureLikes.textContent = likes;
   pictureComments.textContent = comments.length;
   pictureImg.src = url;
-  fragment.appendChild(picture);
+  return picture;
 };
 
 
 const getMiniatures = (data) => {
-  data.forEach((item) => getFragmentItem(item));
+  const fragment = document.createDocumentFragment();
+  data.forEach((item) => fragment.appendChild(renderPhoto(item)));
+  removePictures();
   pictures.appendChild(fragment);
 };
 
