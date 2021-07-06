@@ -22,6 +22,7 @@ const getComment = ({avatar, name, message}) => {
   avatarImage.alt = name;
   avatarImage.width = AVATAR_WIDTH;
   avatarImage.height = AVATAR_HEIGHT;
+  comment.appendChild(avatarImage);
   text.classList.add('social__text');
   text.textContent = message;
   comment.appendChild(text);
