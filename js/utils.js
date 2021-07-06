@@ -7,6 +7,7 @@ const getRandomNumber = (min, max) => {
   if (isPositiveNumber(min) && isPositiveNumber(max)) {
     const from = Math.min(min, max);
     const to = Math.max(min, max);
+
     return Math.floor(Math.random() * (to - from + 1)) + from;
   }
   throw new Error('Передаваемые аргументы должны быть положительными числами');
@@ -35,6 +36,7 @@ const sortIndex = () => Math.floor(Math.random()*3 - 1);
 
 const createGetRandomItem = (data) => {
   const mixed = [...data];
+
   for (let i = 0; i < data.length; i++) {
     mixed.sort(sortIndex);
   }
