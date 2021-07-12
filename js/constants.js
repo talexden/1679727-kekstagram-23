@@ -1,3 +1,15 @@
+const BODY = document.querySelector('body');
+const PICTURES = document.querySelector('.pictures');
+const BIG_PICTURE_CANCEL = document.querySelector('.big-picture__cancel');
+const UPLOAD_FORM = document.querySelector('.img-upload__form');
+const HASHTAG_INPUT = UPLOAD_FORM.querySelector('.text__hashtags');
+const DESCRIPTION_INPUT = UPLOAD_FORM.querySelector('.text__description');
+const HASHTAG_MIN_LENGHT = 2;
+const HASHTAG_MAX_LENGHT = 20;
+const HASHTAGS_MAX_NUMBER = 5;
+const HASHTAG_SEPARATOR = /\s/;
+const DESCRIPTION_MAX_LENGHT = 140;
+
 const PHOTO_DESCRIPTION = [
   'Лес зеленый', 'Тень самурая', 'Айва Айвазовского', 'Звезды', 'Когда я быдл маленьким',
   '100 чертей', 'Пароходы, пароходы', 'Просто "Куст"', '7 и 1', 'Лампа',
@@ -37,6 +49,17 @@ const AVATAR_WIDTH = 35;
 const AVATAR_HEIGHT = 35;
 
 export {
+  BODY,
+  PICTURES,
+  BIG_PICTURE_CANCEL,
+  UPLOAD_FORM,
+  HASHTAG_INPUT,
+  DESCRIPTION_INPUT,
+  HASHTAG_MIN_LENGHT,
+  HASHTAG_MAX_LENGHT,
+  HASHTAG_SEPARATOR,
+  HASHTAGS_MAX_NUMBER,
+  DESCRIPTION_MAX_LENGHT,
   PHOTO_DESCRIPTION,
   USER_MESSAGES,
   USER_NAMES,

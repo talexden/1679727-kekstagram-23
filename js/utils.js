@@ -46,4 +46,10 @@ const createGetRandomItem = (data) => {
 };
 
 
-export {getRandomNumber, createIdx, fillBy, createGetRandomItem};
+const isEscEvent = (evt) => evt.key === 'Escape' || evt.key === 'Esc';
+
+
+const isEnterEvent = (evt) => evt.key === 'Enter';
+
+
+export {createIdx, createGetRandomItem, fillBy, getRandomNumber, isEnterEvent, isEscEvent};
