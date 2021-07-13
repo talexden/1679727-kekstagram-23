@@ -53,7 +53,7 @@ DESCRIPTION_INPUT.addEventListener('input', validityDescription);
 DESCRIPTION_INPUT.addEventListener('keydown', onEscPropagation);
 
 // eslint-disable-next-line no-console
-const moduleForm = () => console.log('module form - connected');
+const ConnectModuleForm = () => console.log('module form - connected');
 
 
-export {moduleForm};
+export {ConnectModuleForm};
