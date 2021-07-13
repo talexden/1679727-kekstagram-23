@@ -1,3 +1,18 @@
+const BODY = document.querySelector('body');
+const PICTURES = document.querySelector('.pictures');
+const BIG_PICTURE = document.querySelector('.big-picture');
+const BIG_PICTURE_CANCEL = BIG_PICTURE.querySelector('.big-picture__cancel');
+const BIG_PICTURE_SOCIAL = BIG_PICTURE.querySelector('.big-picture__social');
+const UPLOAD_FORM = document.querySelector('.img-upload__form');
+const HASHTAG_INPUT = UPLOAD_FORM.querySelector('.text__hashtags');
+const DESCRIPTION_INPUT = UPLOAD_FORM.querySelector('.text__description');
+const HASHTAG_MIN_LENGHT = 2;
+const HASHTAG_MAX_LENGHT = 20;
+const HASHTAGS_MAX_NUMBER = 5;
+const HASHTAG_SEPARATOR = /\s/;
+const DESCRIPTION_MAX_LENGHT = 140;
+const COMMENT_SHOW_NUMBER = 5;
+
 const PHOTO_DESCRIPTION = [
   'Лес зеленый', 'Тень самурая', 'Айва Айвазовского', 'Звезды', 'Когда я быдл маленьким',
   '100 чертей', 'Пароходы, пароходы', 'Просто "Куст"', '7 и 1', 'Лампа',
@@ -28,7 +43,7 @@ const MAX_PHOTOS = 25;
 const MIN_LIKES = 15;
 const MAX_LIKES = 200;
 const MIN_COMMENTS = 0;
-const MAX_COMMENTS = 6;
+const MAX_COMMENTS = 12;
 const START_COMMENT_ID = 1326;
 const MAX_AVATARS = 6;
 const BASE_IMAGE_PATH = 'photos';
@@ -37,6 +52,20 @@ const AVATAR_WIDTH = 35;
 const AVATAR_HEIGHT = 35;
 
 export {
+  BODY,
+  PICTURES,
+  BIG_PICTURE,
+  BIG_PICTURE_CANCEL,
+  BIG_PICTURE_SOCIAL,
+  UPLOAD_FORM,
+  HASHTAG_INPUT,
+  DESCRIPTION_INPUT,
+  HASHTAG_MIN_LENGHT,
+  HASHTAG_MAX_LENGHT,
+  HASHTAG_SEPARATOR,
+  HASHTAGS_MAX_NUMBER,
+  DESCRIPTION_MAX_LENGHT,
+  COMMENT_SHOW_NUMBER,
   PHOTO_DESCRIPTION,
   USER_MESSAGES,
   USER_NAMES,
