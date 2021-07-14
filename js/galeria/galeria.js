@@ -13,7 +13,7 @@ import {createBigPicture, showBigPicture, hideBigPicture, createSocialComments, 
 const SOCIAL_COMMENTS_LOADER = BIG_PICTURE_SOCIAL.querySelector('.social__comments-loader');
 
 
-const PHOTOS = fillBy(MAX_PHOTOS, getRandomPicture);
+const photos = fillBy(MAX_PHOTOS, getRandomPicture);
 
 
 const renderSocialComments = () => {
@@ -62,7 +62,7 @@ const onClickMiniature = (evt) => {
 
 
 function openBigPicture(dataIdx) {
-  createBigPicture(PHOTOS[dataIdx]);
+  createBigPicture(photos[dataIdx]);
   showBigPicture();
   createSocialComments(HASHTAGS_MAX_NUMBER);
 
@@ -91,7 +91,7 @@ PICTURES.addEventListener('keydown', onEnterMiniature);
 
 
 const createGaleria = () => {
-  appendMiniatures(PHOTOS);
+  appendMiniatures(photos);
 };
 
 

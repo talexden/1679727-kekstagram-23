@@ -8,15 +8,15 @@ import {
   HASHTAG_SEPARATOR
 } from '../constants.js';
 
-import {isArrayElenentsMatch} from '../utils.js';
+import {isArrayElementsMatch} from '../utils.js';
 
-const reHashtag = new RegExp(`^#[A-Za-zА-Яа-я0-9]{${HASHTAG_MIN_LENGHT - 1},${HASHTAG_MAX_LENGHT - 1}}$`);
+const RE_HASHTAG = new RegExp(`^#[A-Za-zА-Яа-я0-9]{${HASHTAG_MIN_LENGHT - 1},${HASHTAG_MAX_LENGHT - 1}}$`);
 
 
 const getHashtagValidity = (hashtag, index) => {
   let validityMessage = `Хэштег может содержать только буквы и цифры. Можно добавить до ${HASHTAGS_MAX_NUMBER} хэштегов через пробел.`;
 
-  if (reHashtag.test(hashtag)) {
+  if (RE_HASHTAG.test(hashtag)) {
     validityMessage = '';
   } else {
     if (hashtag[0] !== '#') {
@@ -45,7 +45,7 @@ const validityHashtagsString = () => {
     for (let i = 0; i < hashtags.length; i++) {
       validityMessage = getHashtagValidity(hashtags[i], i + 1);
     }
-    const matcher =  isArrayElenentsMatch(hashtags);
+    const matcher =  isArrayElementsMatch(hashtags);
     if(matcher[2]) {
       validityMessage = `Хештеги ${matcher[0]+1} и ${matcher[1]+1} должны иметь разные имена.`;
     }

@@ -46,7 +46,7 @@ const createGetRandomItem = (data) => {
 };
 
 
-const isArrayElenentsMatch = (data) => {
+const isArrayElementsMatch = (data) => {
   let matcher = [0, 0, false];
   for (let i = 0; i < data.length - 1; i++) {
     for (let j = i + 1; j < data.length; j++) {
@@ -66,4 +66,4 @@ const isEscEvent = (evt) => evt.key === 'Escape' || evt.key === 'Esc';
 const isEnterEvent = (evt) => evt.key === 'Enter';
 
 
-export {createIdx, createGetRandomItem, fillBy, getRandomNumber, isEnterEvent, isEscEvent, isArrayElenentsMatch};
+export {createIdx, createGetRandomItem, fillBy, getRandomNumber, isEnterEvent, isEscEvent, isArrayElementsMatch};
