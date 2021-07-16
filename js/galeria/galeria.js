@@ -61,7 +61,6 @@ const onClickMiniature = (evt) => {
 
 
 function openBigPicture(dataIdx) {
-  console.log('open');
   createBigPicture(photos[dataIdx]);
   showBigPicture();
   createSocialComments(COMMENT_SHOW_NUMBER);

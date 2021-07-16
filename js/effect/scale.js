@@ -33,7 +33,7 @@ const scaleControlEvent = (evt) => {
 const resetScaleValue = () => {
   scaleValue = SCALE_DEFAULT;
   setScaleStyle(SCALE_DEFAULT);
-}
+};
 
 
 export {scaleControlEvent, resetScaleValue};

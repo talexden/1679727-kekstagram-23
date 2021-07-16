@@ -28,6 +28,8 @@ EFFECT_LEVEL_SLIDER.noUiSlider.on('update', (_, handle, unencoded) => {
   EFFECT_LEVEL_VALUE.value = value;
   effectStyle(EFFECTS[checkedFilterName], value);
   isToggleHideElement(UPLOAD_EFFECT_LEVEL, EFFECTS[checkedFilterName]);
+
+  // eslint-disable-next-line no-console
   console.log(value);
 });
 
