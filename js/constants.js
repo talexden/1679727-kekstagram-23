@@ -2,16 +2,87 @@ const BODY = document.querySelector('body');
 const PICTURES = document.querySelector('.pictures');
 const BIG_PICTURE = document.querySelector('.big-picture');
 const BIG_PICTURE_CANCEL = BIG_PICTURE.querySelector('.big-picture__cancel');
-const BIG_PICTURE_SOCIAL = BIG_PICTURE.querySelector('.big-picture__social');
+const SOCIAL_COMMENTS = BIG_PICTURE.querySelector('.social__comments');
+const SOCIAL_COMMENTS_LOADER = BIG_PICTURE.querySelector('.social__comments-loader');
+const COMMENTS_COUNT__ALL = BIG_PICTURE.querySelector('.comments-count__all');
 const UPLOAD_FORM = document.querySelector('.img-upload__form');
+const IMG_UPLOAD_SCALE = UPLOAD_FORM.querySelector('.img-upload__scale');
+const SCALE_CONTROL_VALUE = IMG_UPLOAD_SCALE.querySelector('.scale__control--value');
+const IMAGE_UPLOAD_PREVIEW = UPLOAD_FORM.querySelector('.img-upload__preview img');
+const EFFECTS_LIST = UPLOAD_FORM.querySelector('.effects__list');
+const UPLOAD_EFFECT_LEVEL = UPLOAD_FORM.querySelector('.img-upload__effect-level');
+const EFFECT_LEVEL_VALUE = UPLOAD_EFFECT_LEVEL.querySelector('.effect-level__value');
+const EFFECT_LEVEL_SLIDER = UPLOAD_EFFECT_LEVEL.querySelector('.effect-level__slider');
 const HASHTAG_INPUT = UPLOAD_FORM.querySelector('.text__hashtags');
 const DESCRIPTION_INPUT = UPLOAD_FORM.querySelector('.text__description');
+const MIN_SCALE = 25;
+const MAX_SCALE = 100;
+const SCALE_STEP = 25;
+const SCALE_DEFAULT = 100;
 const HASHTAG_MIN_LENGHT = 2;
 const HASHTAG_MAX_LENGHT = 20;
 const HASHTAGS_MAX_NUMBER = 5;
 const HASHTAG_SEPARATOR = /\s/;
 const DESCRIPTION_MAX_LENGHT = 140;
 const COMMENT_SHOW_NUMBER = 5;
+
+const EFFECTS = {
+  none: {
+    minValue: 0,
+    maxValue: 100,
+    stepValue: 1,
+    initialValue: 100,
+    isShow: false,
+    filter: 'none',
+    postfix: '',
+  },
+  chrome: {
+    minValue: 0,
+    maxValue: 1,
+    stepValue: 0.1,
+    initialValue: 1,
+    isShow: true,
+    filter: 'grayscale',
+    postfix: '',
+  },
+  sepia: {
+    minValue: 0,
+    maxValue: 1,
+    stepValue: 0.1,
+    initialValue: 1,
+    isShow: true,
+    filter: 'sepia',
+    postfix: '',
+  },
+  marvin: {
+    minValue: 0,
+    maxValue: 100,
+    stepValue: 1,
+    initialValue: 100,
+    isShow: true,
+    filter: 'invert',
+    postfix: '%',
+  },
+  phobos: {
+    minValue: 0,
+    maxValue: 3,
+    stepValue: 0.1,
+    initialValue: 3,
+    isShow: true,
+    filter: 'blur',
+    postfix: 'px',
+  },
+  heat: {
+    minValue: 0,
+    maxValue: 3,
+    stepValue: 0.1,
+    initialValue: 3,
+    isShow: true,
+    filter: 'brightness',
+    postfix: '',
+  },
+};
+
 
 const PHOTO_DESCRIPTION = [
   'Лес зеленый', 'Тень самурая', 'Айва Айвазовского', 'Звезды', 'Когда я быдл маленьким',
@@ -56,8 +127,17 @@ export {
   PICTURES,
   BIG_PICTURE,
   BIG_PICTURE_CANCEL,
-  BIG_PICTURE_SOCIAL,
+  SOCIAL_COMMENTS,
+  SOCIAL_COMMENTS_LOADER,
+  COMMENTS_COUNT__ALL,
   UPLOAD_FORM,
+  IMG_UPLOAD_SCALE,
+  SCALE_CONTROL_VALUE,
+  IMAGE_UPLOAD_PREVIEW,
+  UPLOAD_EFFECT_LEVEL,
+  EFFECT_LEVEL_VALUE,
+  EFFECT_LEVEL_SLIDER,
+  EFFECTS_LIST,
   HASHTAG_INPUT,
   DESCRIPTION_INPUT,
   HASHTAG_MIN_LENGHT,
@@ -66,6 +146,11 @@ export {
   HASHTAGS_MAX_NUMBER,
   DESCRIPTION_MAX_LENGHT,
   COMMENT_SHOW_NUMBER,
+  MIN_SCALE,
+  MAX_SCALE,
+  SCALE_STEP,
+  SCALE_DEFAULT,
+  EFFECTS,
   PHOTO_DESCRIPTION,
   USER_MESSAGES,
   USER_NAMES,

@@ -1,4 +1,4 @@
-/*! nouislider - 14.6.3 - 11/19/2020 */
+/*! effect - 14.6.3 - 11/19/2020 */
 (function(factory) {
     if (typeof define === "function" && define.amd) {
         // AMD. Register as an anonymous module.
@@ -271,7 +271,7 @@
         var a = xPct[j - 1];
         var b = xPct[j];
 
-        // If 'snap' is set, steps are used as fixed points on the slider.
+        // If 'snap' is set, steps are used as fixed points on the effect.
         if (snap) {
             // Find the closest position, a or b.
             if (value - a > (b - a) / 2) {
@@ -707,7 +707,7 @@
         // Store the number of handles.
         parsed.handles = entry.length;
 
-        // When the slider is initialized, the .val method will
+        // When the effect is initialized, the .val method will
         // be called with the start options.
         parsed.start = entry;
     }
@@ -1160,7 +1160,7 @@
                 });
             }
 
-            handle.setAttribute("role", "slider");
+            handle.setAttribute("role", "effect");
             handle.setAttribute("aria-orientation", options.ort ? "vertical" : "horizontal");
 
             if (handleNumber === 0) {
@@ -1181,7 +1181,7 @@
             return addNodeTo(base, options.cssClasses.connect);
         }
 
-        // Add handles to the slider base.
+        // Add handles to the effect base.
         function addElements(connectOptions, base) {
             var connectBase = addNodeTo(base, options.cssClasses.connects);
 
@@ -1201,7 +1201,7 @@
             }
         }
 
-        // Initialize a single slider.
+        // Initialize a single effect.
         function addSlider(addTarget) {
             // Apply classes and data to the target.
             addClass(addTarget, options.cssClasses.target);
@@ -1241,7 +1241,7 @@
             return scope_Target.hasAttribute("disabled");
         }
 
-        // Disable the slider dragging if any handle is disabled
+        // Disable the effect dragging if any handle is disabled
         function isHandleDisabled(handleNumber) {
             var handleOrigin = scope_Handles[handleNumber];
             return handleOrigin.hasAttribute("disabled");
@@ -1296,7 +1296,7 @@
                     // Formatted value for display
                     var text = options.ariaFormat.to(unencoded[index]);
 
-                    // Map to slider range values
+                    // Map to effect range values
                     min = scope_Spectrum.fromStepping(min).toFixed(1);
                     max = scope_Spectrum.fromStepping(max).toFixed(1);
                     now = scope_Spectrum.fromStepping(now).toFixed(1);
@@ -1571,7 +1571,7 @@
 
         // Handler for attaching events trough a proxy.
         function attachEvent(events, element, callback, data) {
-            // This function can be used to 'filter' events to the slider.
+            // This function can be used to 'filter' events to the effect.
             // element is a node, not a nodeList
 
             var method = function(e) {
@@ -1584,7 +1584,7 @@
                 }
 
                 // doNotReject is passed by all end events to make sure released touches
-                // are not rejected, leaving the slider "stuck" to the cursor;
+                // are not rejected, leaving the effect "stuck" to the cursor;
                 if (isSliderDisabled() && !data.doNotReject) {
                     return false;
                 }
@@ -1648,7 +1648,7 @@
             }
 
             // Erroneous events seem to be passed in occasionally on iOS/iPadOS after user finishes interacting with
-            // the slider. They appear to be of type MouseEvent, yet they don't have usual properties set. Ignore
+            // the effect. They appear to be of type MouseEvent, yet they don't have usual properties set. Ignore
             // events that have no touches or buttons associated with them. (#1057, #1079, #1095)
             if (e.type === "mousedown" && !e.buttons && !e.touches) {
                 return false;
@@ -1705,7 +1705,7 @@
             return e;
         }
 
-        // Translate a coordinate in the document to a percentage on the slider
+        // Translate a coordinate in the document to a percentage on the effect
         function calcPointToPercentage(calcPoint) {
             var location = calcPoint - offset(scope_Base, options.ort);
             var proposal = (location * 100) / baseSize();
@@ -1718,7 +1718,7 @@
             return options.dir ? 100 - proposal : proposal;
         }
 
-        // Find handle closest to a certain percentage on the slider
+        // Find handle closest to a certain percentage on the effect
         function getClosestHandle(clickedPosition) {
             var smallestDifference = 100;
             var handleNumber = false;
@@ -1769,7 +1769,7 @@
             // Check if we are moving up or down
             var movement = (options.dir ? -1 : 1) * (event.calcPoint - data.startCalcPoint);
 
-            // Convert the movement into a percentage of the slider width/height
+            // Convert the movement into a percentage of the effect width/height
             var proposal = (movement * 100) / data.baseSize;
 
             moveHandles(movement > 0, proposal, data.locations, data.handleNumbers);
@@ -1905,8 +1905,8 @@
                 return false;
             }
 
-            // Flag the slider as it is now in a transitional state.
-            // Transition takes a configurable amount of ms (default 300). Re-enable the slider after that.
+            // Flag the effect as it is now in a transitional state.
+            // Transition takes a configurable amount of ms (default 300). Re-enable the effect after that.
             if (!options.events.snap) {
                 addClassFor(scope_Target, options.cssClasses.tap, options.animationDuration);
             }
@@ -1954,10 +1954,10 @@
             var edgeKeys = ["Home", "End"];
 
             if (options.dir && !options.ort) {
-                // On an right-to-left slider, the left and right keys act inverted
+                // On an right-to-left effect, the left and right keys act inverted
                 horizontalKeys.reverse();
             } else if (options.ort && !options.dir) {
-                // On a top-to-bottom slider, the up and down keys act inverted
+                // On a top-to-bottom effect, the up and down keys act inverted
                 verticalKeys.reverse();
                 largeStepKeys.reverse();
             }
@@ -1986,7 +1986,7 @@
                 var steps = getNextStepsForHandle(handleNumber);
                 var step = steps[direction];
 
-                // At the edge of a slider, do nothing
+                // At the edge of a effect, do nothing
                 if (step === null) {
                     return false;
                 }
@@ -2029,7 +2029,7 @@
             return false;
         }
 
-        // Attach events to several slider parts.
+        // Attach events to several effect parts.
         function bindSliderEvents(behaviour) {
             // Attach the standard drag event to the handles.
             if (!behaviour.fixed) {
@@ -2042,7 +2042,7 @@
                 });
             }
 
-            // Attach the tap event to the slider base.
+            // Attach the tap event to the effect base.
             if (behaviour.tap) {
                 attachEvent(actions.start, scope_Base, eventTap, {});
             }
@@ -2086,7 +2086,7 @@
             }
         }
 
-        // Attach an event to this slider, possibly including a namespace
+        // Attach an event to this effect, possibly including a namespace
         function bindEvent(namespacedEvent, callback) {
             scope_Events[namespacedEvent] = scope_Events[namespacedEvent] || [];
             scope_Events[namespacedEvent].push(callback);
@@ -2128,19 +2128,19 @@
                 if (eventName === eventType) {
                     scope_Events[targetEvent].forEach(function(callback) {
                         callback.call(
-                            // Use the slider public API as the scope ('this')
+                            // Use the effect public API as the scope ('this')
                             scope_Self,
                             // Return values as array, so arg_1[arg_2] is always valid.
                             scope_Values.map(options.format.to),
                             // Handle index, 0 or 1
                             handleNumber,
-                            // Un-formatted slider values
+                            // Un-formatted effect values
                             scope_Values.slice(),
                             // Event is fired by tap, true or false
                             tap || false,
-                            // Left offset of the handle, in relation to the slider
+                            // Left offset of the handle, in relation to the effect
                             scope_Locations.slice(),
-                            // add the slider public API to an accessible parameter when this is unavailable
+                            // add the effect public API to an accessible parameter when this is unavailable
                             scope_Self
                         );
                     });
@@ -2182,7 +2182,7 @@
             }
 
             // The padding option keeps the handles a certain distance from the
-            // edges of the slider. Padding must be > 0.
+            // edges of the effect. Padding must be > 0.
             if (options.padding) {
                 if (handleNumber === 0) {
                     distance = scope_Spectrum.getAbsoluteDistance(0, options.padding[0], 0);
@@ -2208,7 +2208,7 @@
             return to;
         }
 
-        // Uses slider orientation to create CSS rules. a = base value;
+        // Uses effect orientation to create CSS rules. a = base value;
         function inRuleOrder(v, a) {
             var o = options.ort;
             return (o ? a : v) + ", " + (o ? v : a);
@@ -2287,7 +2287,7 @@
             // Update locations.
             scope_Locations[handleNumber] = to;
 
-            // Convert the value to the slider stepping/range.
+            // Convert the value to the effect stepping/range.
             scope_Values[handleNumber] = scope_Spectrum.fromStepping(to);
 
             var translation = 10 * (transformDirection(to, 0) - scope_DirOffset);
@@ -2299,7 +2299,7 @@
             updateConnect(handleNumber + 1);
         }
 
-        // Handles before the slider middle are stacked later = higher,
+        // Handles before the effect middle are stacked later = higher,
         // Handles after the middle later is lower
         // [[7] [8] .......... | .......... [5] [4]
         function setZindex() {
@@ -2379,7 +2379,7 @@
             return to;
         }
 
-        // Set the slider value.
+        // Set the effect value.
         function valueSet(input, fireSetEvent, exactInput) {
             var values = asArray(input);
             var isInit = scope_Locations[0] === undefined;
@@ -2401,7 +2401,7 @@
             var i = scope_HandleNumbers.length === 1 ? 0 : 1;
 
             // Secondary passes. Now that all base values are set, apply constraints.
-            // Iterate all handles to ensure constraints are applied for the entire slider (Issue #1009)
+            // Iterate all handles to ensure constraints are applied for the entire effect (Issue #1009)
             for (; i < scope_HandleNumbers.length; ++i) {
                 scope_HandleNumbers.forEach(function(handleNumber) {
                     setHandle(handleNumber, scope_Locations[handleNumber], true, true, exactInput);
@@ -2420,7 +2420,7 @@
             });
         }
 
-        // Reset slider to initial values
+        // Reset effect to initial values
         function valueReset(fireSetEvent) {
             valueSet(options.start, fireSetEvent);
         }
@@ -2435,7 +2435,7 @@
             }
 
             // Look both backward and forward, since we don't want this handle to "push" other handles (#960);
-            // The exactInput argument can be used to ignore slider stepping (#436)
+            // The exactInput argument can be used to ignore effect stepping (#436)
             setHandle(handleNumber, resolveToValue(value, handleNumber), true, true, exactInput);
 
             fireEvent("update", handleNumber);
@@ -2445,7 +2445,7 @@
             }
         }
 
-        // Get the slider value.
+        // Get the effect value.
         function valueGet() {
             var values = scope_Values.map(options.format.to);
 
@@ -2512,7 +2512,7 @@
                 decrement = value - nearbySteps.stepBefore.highestStep;
             }
 
-            // Now, if at the slider edges, there is no in/decrement
+            // Now, if at the effect edges, there is no in/decrement
             if (location === 100) {
                 increment = null;
             } else if (location === 0) {
@@ -2534,7 +2534,7 @@
             return [decrement, increment];
         }
 
-        // Get the current step size for the slider.
+        // Get the current step size for the effect.
         function getNextSteps() {
             return scope_HandleNumbers.map(getNextStepsForHandle);
         }
@@ -2569,7 +2569,7 @@
 
             var newOptions = testOptions(originalOptions);
 
-            // Load new options into the slider state
+            // Load new options into the effect state
             updateAble.forEach(function(name) {
                 if (optionsToUpdate[name] !== undefined) {
                     options[name] = newOptions[name];
@@ -2666,12 +2666,12 @@
             throw new Error("noUiSlider (" + VERSION + "): create requires a single element, got: " + target);
         }
 
-        // Throw an error if the slider was already initialized.
+        // Throw an error if the effect was already initialized.
         if (target.noUiSlider) {
             throw new Error("noUiSlider (" + VERSION + "): Slider was already initialized.");
         }
 
-        // Test the options and create the slider environment;
+        // Test the options and create the effect environment;
         var options = testOptions(originalOptions, target);
         var api = scope(target, options, originalOptions);
 
@@ -2686,7 +2686,7 @@
         __spectrum: Spectrum,
         version: VERSION,
         // A reference to the default classes, allows global changes.
-        // Use the cssClasses option for changes to one slider.
+        // Use the cssClasses option for changes to one effect.
         cssClasses: cssClasses,
         create: initialize
     };

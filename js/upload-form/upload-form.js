@@ -1,6 +1,7 @@
 import {BODY, DESCRIPTION_INPUT, HASHTAG_INPUT, UPLOAD_FORM} from '../constants.js';
 import {isEscEvent} from '../utils.js';
 import {validityHashtagsString, validityDescription} from './upload-form-validation.js';
+import {resetUploadForm} from '../resets.js';
 
 const UPLOAD_INPUT = UPLOAD_FORM.querySelector('.img-upload__input');
 const UPLOAD_FORM_MODAL = UPLOAD_FORM.querySelector('.img-upload__overlay');
@@ -11,6 +12,7 @@ const onEscKeydown = (evt) => {
   if (isEscEvent(evt)) {
     // eslint-disable-next-line no-use-before-define
     closeUploadFormModal();
+
   }
 };
 
@@ -22,12 +24,13 @@ const onEscPropagation = (evt) => {
 };
 
 
-const resetUploadForm = () => {
+const resetFileInput = () => {
   UPLOAD_FORM_MODAL.files = '';
 };
 
 
 function openUploadFormModal() {
+  resetUploadForm();
   UPLOAD_FORM_MODAL.classList.remove('hidden');
   BODY.classList.add('modal-open');
   window.addEventListener('keydown', onEscKeydown);
@@ -38,7 +41,6 @@ function closeUploadFormModal() {
   UPLOAD_FORM_MODAL.classList.add('hidden');
   BODY.classList.remove('modal-open');
   window.removeEventListener('keydown', onEscKeydown);
-  resetUploadForm();
 }
 
 
@@ -56,4 +58,4 @@ DESCRIPTION_INPUT.addEventListener('keydown', onEscPropagation);
 const connectModuleForm = () => console.log('module form - connected');
 
 
-export {connectModuleForm};
+export {connectModuleForm, resetFileInput};

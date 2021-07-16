@@ -60,10 +60,15 @@ const isArrayElementsMatch = (data) => {
 };
 
 
+const isToggleHideElement = (element, {isShow}) => isShow ?
+  element.classList.remove('visually-hidden') :
+  element.classList.add('visually-hidden');
+
+
 const isEscEvent = (evt) => evt.key === 'Escape' || evt.key === 'Esc';
 
 
 const isEnterEvent = (evt) => evt.key === 'Enter';
 
 
-export {createIdx, createGetRandomItem, fillBy, getRandomNumber, isEnterEvent, isEscEvent, isArrayElementsMatch};
+export {createIdx, createGetRandomItem, fillBy, getRandomNumber, isEnterEvent, isEscEvent, isArrayElementsMatch, isToggleHideElement};

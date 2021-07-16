@@ -2,22 +2,21 @@ import {
   MAX_PHOTOS,
   BIG_PICTURE_CANCEL,
   PICTURES,
-  HASHTAGS_MAX_NUMBER,
-  BIG_PICTURE_SOCIAL
+  COMMENT_SHOW_NUMBER,
+  SOCIAL_COMMENTS_LOADER
 } from '../constants.js';
+
 import {fillBy, isEscEvent, isEnterEvent} from '../utils.js';
 import {getRandomPicture} from '../data.js';
 import {appendMiniatures} from './miniature.js';
-import {createBigPicture, showBigPicture, hideBigPicture, createSocialComments, unhideComments, updateCommentsCount} from './big-picture.js';
-
-const SOCIAL_COMMENTS_LOADER = BIG_PICTURE_SOCIAL.querySelector('.social__comments-loader');
-
+import {createBigPicture, showBigPicture, hideBigPicture} from './big-picture.js';
+import {createSocialComments, unhideComments, updateCommentsCount} from './comments.js';
 
 const photos = fillBy(MAX_PHOTOS, getRandomPicture);
 
 
 const renderSocialComments = () => {
-  unhideComments(HASHTAGS_MAX_NUMBER);
+  unhideComments(COMMENT_SHOW_NUMBER);
   updateCommentsCount();
 };
 
@@ -64,7 +63,7 @@ const onClickMiniature = (evt) => {
 function openBigPicture(dataIdx) {
   createBigPicture(photos[dataIdx]);
   showBigPicture();
-  createSocialComments(HASHTAGS_MAX_NUMBER);
+  createSocialComments(COMMENT_SHOW_NUMBER);
 
   PICTURES.removeEventListener('keydown', onEnterMiniature);
   // eslint-disable-next-line no-use-before-define
