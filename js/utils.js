@@ -71,4 +71,6 @@ const isEscEvent = (evt) => evt.key === 'Escape' || evt.key === 'Esc';
 const isEnterEvent = (evt) => evt.key === 'Enter';
 
 
-export {createIdx, createGetRandomItem, fillBy, getRandomNumber, isEnterEvent, isEscEvent, isArrayElementsMatch, isToggleHideElement};
+const getMathFloor = (number, numberOrder) => Math.floor(number * Math.pow(10, numberOrder)) / Math.pow(10, numberOrder);
+
+export {createIdx, createGetRandomItem, fillBy, getRandomNumber, isEnterEvent, isEscEvent, isArrayElementsMatch, isToggleHideElement, getMathFloor};

@@ -9,8 +9,8 @@ import {
 import {isToggleHideElement} from '../utils.js';
 import {createSlider, updateSlider} from './slider.js';
 import './nouislider.js';
-import {effectStyle, applyEffect} from './filters.js';
-import {scaleControlEvent} from './scale.js';
+import {renderStyle, applyEffect} from './filters.js';
+import {scaleControlEvent, getScaleValue} from './scale.js';
 
 createSlider(EFFECT_LEVEL_SLIDER, EFFECTS.none);
 
@@ -23,14 +23,22 @@ EFFECTS_LIST.addEventListener('change', () => {
 });
 
 
+const sliderValueFleter = (number) => {
+  if (Number.isInteger(number)) {
+    return number.toFixed(0);
+  }
+  return number.toFixed(1);
+};
+
+
 EFFECT_LEVEL_SLIDER.noUiSlider.on('update', (_, handle, unencoded) => {
-  const value = unencoded[handle];
-  EFFECT_LEVEL_VALUE.value = value;
-  effectStyle(EFFECTS[checkedFilterName], value);
+  const sliderValue = sliderValueFleter(unencoded[handle]);
+  EFFECT_LEVEL_VALUE.value = sliderValue;
+  renderStyle(EFFECTS[checkedFilterName], sliderValue, getScaleValue());
   isToggleHideElement(UPLOAD_EFFECT_LEVEL, EFFECTS[checkedFilterName]);
 
   // eslint-disable-next-line no-console
-  console.log(value);
+  console.log(sliderValue);
 });
 
 

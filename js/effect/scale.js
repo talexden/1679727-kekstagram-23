@@ -9,10 +9,10 @@ import {
 
 
 const setScaleStyle = (value) => {
-  IMAGE_UPLOAD_PREVIEW.style = `transform: scale(${value * 0.01})`;
+  IMAGE_UPLOAD_PREVIEW.style = `transform: scale(${value})`;
 };
 
-let scaleValue = SCALE_CONTROL_VALUE.value.replace('%', '');
+let scaleValue = SCALE_DEFAULT;
 
 const scaleControlEvent = (evt) => {
   const target = evt.target;
@@ -25,10 +25,12 @@ const scaleControlEvent = (evt) => {
   }
   if (scaleValue < MIN_SCALE) {scaleValue = MIN_SCALE;}
   if (scaleValue > MAX_SCALE) {scaleValue = MAX_SCALE;}
-  SCALE_CONTROL_VALUE.value = `${scaleValue}%`;
+  SCALE_CONTROL_VALUE.value = `${scaleValue * 100}%`;
   setScaleStyle(scaleValue);
 };
 
+
+const getScaleValue = () => scaleValue;
 
 const resetScaleValue = () => {
   scaleValue = SCALE_DEFAULT;
@@ -36,4 +38,4 @@ const resetScaleValue = () => {
 };
 
 
-export {scaleControlEvent, resetScaleValue};
+export {scaleControlEvent, resetScaleValue, getScaleValue};

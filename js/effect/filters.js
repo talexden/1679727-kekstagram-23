@@ -1,8 +1,8 @@
 import {IMAGE_UPLOAD_PREVIEW} from '../constants.js';
 
 
-const effectStyle = ({filter, postfix = ''}, filterValue ) => {
-  const string = `filter: ${filter}(${filterValue}${postfix}); -webkit-filter: ${filter}(${filterValue}${postfix})`;
+const renderStyle = ({filter, postfix = ''}, filterValue, scaleValue = 1) => {
+  const string = `filter: ${filter}(${filterValue}${postfix}); -webkit-filter: ${filter}(${filterValue}${postfix}); transform: scale(${scaleValue});`;
   IMAGE_UPLOAD_PREVIEW.style = string;
 };
 
@@ -13,4 +13,4 @@ const applyEffect = (effectName) => {
 };
 
 
-export {effectStyle, applyEffect};
+export {renderStyle, applyEffect};
