@@ -1,6 +1,4 @@
-function isPositiveNumber(anyData) {
-  return typeof anyData === 'number' && anyData >= 0;
-}
+const isPositiveNumber = (anyData) => typeof anyData === 'number' && anyData >= 0;
 
 
 const getRandomNumber = (min, max) => {

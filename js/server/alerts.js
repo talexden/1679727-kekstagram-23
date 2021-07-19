@@ -15,7 +15,11 @@ const showAlert = (classElement) => {
 };
 
 
-const isOutsideEvent = (evt) => {
+const openUpdateFailAlert = () => {
+  showAlert('update-fail');
+};
+
+const onNoPopupClickEvent = (evt) => {
   const target = evt.target;
   const isPopup = target === alertWindow || alertWindow.contains(target);
   const isButton = target === alertBtn;
@@ -23,7 +27,7 @@ const isOutsideEvent = (evt) => {
 };
 
 
-const buttonAlertEvent = (evt) => {
+const onButtonClickEvent = (evt) => {
   const target = evt.target;
 
   if (target === alertBtn) {
@@ -42,26 +46,29 @@ const onEscapeAlert = (evt) => {
 };
 
 const onClickOutside = (evt) => {
-  if (isOutsideEvent(evt)) {
+  if (onNoPopupClickEvent(evt)) {
     // eslint-disable-next-line no-use-before-define
     closeAlert(alert);
   }
 };
 
+
+// здесь function потому что эта функция используется выше
 function openAlert(element) {
   element.classList.remove('hidden');
-  element.addEventListener('click', buttonAlertEvent);
+  element.addEventListener('click', onButtonClickEvent);
   document.addEventListener('keydown', onEscapeAlert);
   document.addEventListener('click', onClickOutside);
 }
 
 
+// здесь function потому что эта функция используется выше
 function closeAlert(element) {
   element.classList.add('hidden');
-  element.removeEventListener('click', buttonAlertEvent);
+  element.removeEventListener('click', onButtonClickEvent);
   document.removeEventListener('keydown', onEscapeAlert);
   document.removeEventListener('click', onClickOutside);
 }
 
 
-export {showAlert};
+export {showAlert, openUpdateFailAlert};

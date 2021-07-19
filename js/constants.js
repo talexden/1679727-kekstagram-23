@@ -25,6 +25,8 @@ const HASHTAGS_MAX_NUMBER = 5;
 const HASHTAG_SEPARATOR = /\s/;
 const DESCRIPTION_MAX_LENGHT = 140;
 const COMMENT_SHOW_NUMBER = 5;
+const INCOMING_SERVER_ADDRESS = 'https://23.javascript.pages.academy/kekstagram/data';
+const OUTGOING_SERVER_ADDRESS = 'https://23.javascript.pages.academy/kekstagram';
 
 const EFFECTS = {
   none: {
@@ -150,6 +152,8 @@ export {
   MAX_SCALE,
   SCALE_STEP,
   SCALE_DEFAULT,
+  INCOMING_SERVER_ADDRESS,
+  OUTGOING_SERVER_ADDRESS,
   EFFECTS,
   PHOTO_DESCRIPTION,
   USER_MESSAGES,

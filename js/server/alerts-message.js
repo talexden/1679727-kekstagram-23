@@ -1,7 +1,7 @@
 import {BODY} from '../constants.js';
 
 
-const alerts = (templateName, alertType) => {
+const createAlert = (templateName, alertType) => {
   const messageTemlate = document.querySelector(`#${templateName}`).content;
   const messageNode = messageTemlate.cloneNode(true);
   const message = messageNode.querySelector('section');
@@ -16,9 +16,9 @@ const alerts = (templateName, alertType) => {
 
 
 const createAlerts = () => {
-  alerts('fail', 'update');
-  alerts('success', 'upload');
-  alerts('error', 'upload');
+  createAlert('fail', 'update');
+  createAlert('success', 'upload');
+  createAlert('error', 'upload');
 };
 
 

@@ -18,7 +18,7 @@ const UPLOAD_FORM_CANCEL = UPLOAD_FORM.querySelector('.img-upload__cancel');
 
 
 const resetFileInput = () => {
-  UPLOAD_FORM_MODAL.files = '';
+  UPLOAD_INPUT.value = '';
 };
 
 const resetUploadForm = () => {
@@ -28,13 +28,13 @@ const resetUploadForm = () => {
   resetDescription();
 };
 
-const ifSubmitSuccess = () => {
+const openSuccessAlert = () => {
   // eslint-disable-next-line no-use-before-define
   closeUploadFormModal();
   showAlert('upload-success');
 };
 
-const ifSubmitError = () => {
+const openErrorAlert = () => {
   // eslint-disable-next-line no-use-before-define
   closeUploadFormModal();
   showAlert('upload-error');
@@ -55,6 +55,7 @@ const onEscPropagation = (evt) => {
 };
 
 
+// здесь function потому что эта функция используется выше
 function openUploadFormModal() {
   UPLOAD_FORM_MODAL.classList.remove('hidden');
   BODY.classList.add('modal-open');
@@ -62,12 +63,12 @@ function openUploadFormModal() {
 }
 
 
+// здесь function потому что эта функция используется выше
 function closeUploadFormModal() {
   resetUploadForm();
   UPLOAD_FORM_MODAL.classList.add('hidden');
   BODY.classList.remove('modal-open');
   window.removeEventListener('keydown', onEscKeydown);
-  getData(appendMiniatures);
 }
 
 
@@ -82,4 +83,4 @@ DESCRIPTION_INPUT.addEventListener('input', validityDescription);
 DESCRIPTION_INPUT.addEventListener('keydown', onEscPropagation);
 
 
-export {ifSubmitSuccess, ifSubmitError};
+export {openSuccessAlert, openErrorAlert};

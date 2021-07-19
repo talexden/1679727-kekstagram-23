@@ -56,6 +56,7 @@ const onClickMiniature = (evt) => {
 };
 
 
+// здесь function потому что эта функция используется выше
 function openBigPicture(dataIdx) {
   createBigPicture(pictures[dataIdx]);
   showBigPicture();
@@ -70,6 +71,7 @@ function openBigPicture(dataIdx) {
 }
 
 
+// здесь function потому что эта функция используется выше
 function closeBigPicture() {
   hideBigPicture();
 

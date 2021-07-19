@@ -9,7 +9,7 @@ import {
 import {isToggleHideElement} from '../utils.js';
 import {createSlider, updateSlider} from './slider.js';
 import './nouislider.js';
-import {renderStyle, applyEffect} from './filters.js';
+import {setImageStyle, applyEffect} from './filters.js';
 import {scaleControlEvent, getScaleValue, resetScaleValue} from './scale.js';
 
 const noEffectRadio = EFFECTS_LIST.querySelector('#effect-none');
@@ -34,21 +34,17 @@ EFFECTS_LIST.addEventListener('change', () => {
 });
 
 
-const sliderValueFleter = (number) => {
-  if (Number.isInteger(number)) {
-    return number.toFixed(0);
-  }
-  return number.toFixed(1);
-};
+const sliderValueFleter = (value) => Number.isInteger(value) ?  value.toFixed(0) : value.toFixed(1);
 
 
-EFFECT_LEVEL_SLIDER.noUiSlider.on('update', (_, handle, unencoded) => {
+const sliderUpdate = (_, handle, unencoded) => {
   const sliderValue = sliderValueFleter(unencoded[handle]);
   EFFECT_LEVEL_VALUE.value = sliderValue;
-  renderStyle(EFFECTS[checkedFilterName], sliderValue, getScaleValue());
+  setImageStyle(EFFECTS[checkedFilterName], sliderValue, getScaleValue());
   isToggleHideElement(UPLOAD_EFFECT_LEVEL, EFFECTS[checkedFilterName]);
-});
+};
 
+EFFECT_LEVEL_SLIDER.noUiSlider.on('update', sliderUpdate);
 
 IMG_UPLOAD_SCALE.addEventListener('click', scaleControlEvent);
 
