@@ -1,18 +1,14 @@
 import {
-  MAX_PHOTOS,
   BIG_PICTURE_CANCEL,
   PICTURES,
   COMMENT_SHOW_NUMBER,
   SOCIAL_COMMENTS_LOADER
 } from '../constants.js';
 
-import {fillBy, isEscEvent, isEnterEvent} from '../utils.js';
-import {getRandomPicture} from '../data.js';
-import {appendMiniatures} from './miniature.js';
+import {isEscEvent, isEnterEvent} from '../utils.js';
 import {createBigPicture, showBigPicture, hideBigPicture} from './big-picture.js';
 import {createSocialComments, unhideComments, updateCommentsCount} from './comments.js';
-
-const photos = fillBy(MAX_PHOTOS, getRandomPicture);
+import {pictures} from './miniature.js';
 
 
 const renderSocialComments = () => {
@@ -51,7 +47,7 @@ const onClickMiniature = (evt) => {
   }
 
   if (target.classList.contains ('picture')) {
-    const dataIdx = target.getAttribute('data-id') - 1;
+    const dataIdx = target.getAttribute('data-id');
 
     evt.preventDefault();
     // eslint-disable-next-line no-use-before-define
@@ -61,7 +57,7 @@ const onClickMiniature = (evt) => {
 
 
 function openBigPicture(dataIdx) {
-  createBigPicture(photos[dataIdx]);
+  createBigPicture(pictures[dataIdx]);
   showBigPicture();
   createSocialComments(COMMENT_SHOW_NUMBER);
 
@@ -88,10 +84,3 @@ function closeBigPicture() {
 PICTURES.addEventListener('click', onClickMiniature);
 PICTURES.addEventListener('keydown', onEnterMiniature);
 
-
-const createGaleria = () => {
-  appendMiniatures(photos);
-};
-
-
-export {createGaleria};

@@ -35,6 +35,7 @@ const getScaleValue = () => scaleValue;
 const resetScaleValue = () => {
   scaleValue = SCALE_DEFAULT;
   setScaleStyle(SCALE_DEFAULT);
+  SCALE_CONTROL_VALUE.value = `${scaleValue * 100}%`;
 };
 
 

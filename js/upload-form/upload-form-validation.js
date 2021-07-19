@@ -67,4 +67,13 @@ const validityDescription = () => {
 };
 
 
-export {validityHashtagsString, validityDescription};
+const resetHashtag = () => {
+  HASHTAG_INPUT.value = '';
+};
+
+const resetDescription = () => {
+  DESCRIPTION_INPUT.value = '';
+};
+
+
+export {validityHashtagsString, validityDescription, resetHashtag, resetDescription};
