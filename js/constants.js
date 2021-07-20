@@ -15,16 +15,18 @@ const EFFECT_LEVEL_VALUE = UPLOAD_EFFECT_LEVEL.querySelector('.effect-level__val
 const EFFECT_LEVEL_SLIDER = UPLOAD_EFFECT_LEVEL.querySelector('.effect-level__slider');
 const HASHTAG_INPUT = UPLOAD_FORM.querySelector('.text__hashtags');
 const DESCRIPTION_INPUT = UPLOAD_FORM.querySelector('.text__description');
-const MIN_SCALE = 25;
-const MAX_SCALE = 100;
-const SCALE_STEP = 25;
-const SCALE_DEFAULT = 100;
+const MIN_SCALE = 0.25;
+const MAX_SCALE = 1;
+const SCALE_STEP = 0.25;
+const SCALE_DEFAULT = 1;
 const HASHTAG_MIN_LENGHT = 2;
 const HASHTAG_MAX_LENGHT = 20;
 const HASHTAGS_MAX_NUMBER = 5;
 const HASHTAG_SEPARATOR = /\s/;
 const DESCRIPTION_MAX_LENGHT = 140;
 const COMMENT_SHOW_NUMBER = 5;
+const INCOMING_SERVER_ADDRESS = 'https://23.javascript.pages.academy/kekstagram/data';
+const OUTGOING_SERVER_ADDRESS = 'https://23.javascript.pages.academy/kekstagram';
 
 const EFFECTS = {
   none: {
@@ -150,6 +152,8 @@ export {
   MAX_SCALE,
   SCALE_STEP,
   SCALE_DEFAULT,
+  INCOMING_SERVER_ADDRESS,
+  OUTGOING_SERVER_ADDRESS,
   EFFECTS,
   PHOTO_DESCRIPTION,
   USER_MESSAGES,

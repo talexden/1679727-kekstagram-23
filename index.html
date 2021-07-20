@@ -40,7 +40,7 @@
             </fieldset>
 
             <!-- Форма редактирования изображения -->
-            <div class="img-upload__overlay UNHIDDEN">
+            <div class="img-upload__overlay hidden">
               <div class="img-upload__wrapper">
                 <div class="img-upload__preview-container">
 
@@ -206,12 +206,12 @@
     </a>
   </template>
 
-  <!-- Сообщение с ошибкой загрузки изображения -->
-  <template id="error">
+  <!-- Сообщение с ошибкой загрузки данных -->
+  <template id="fail">
     <section class="error">
       <div class="error__inner">
-        <h2 class="error__title">Ошибка загрузки файла</h2>
-        <button type="button" class="error__button">Загрузить другой файл</button>
+        <h2 class="error__title">Ошибка обновления</h2>
+        <button type="button" class="error__button">Закрыть сообщение</button>
       </div>
     </section>
   </template>
@@ -226,6 +226,15 @@
     </section>
   </template>
 
+  <!-- Сообщение с ошибкой загрузки изображения -->
+  <template id="error">
+    <section class="error">
+      <div class="error__inner">
+        <h2 class="error__title">Ошибка загрузки файла</h2>
+        <button type="button" class="error__button">Загрузить другой файл</button>
+      </div>
+    </section>
+  </template>
   <!-- Экран загрузки изображения -->
   <template id="messages">
     <div class="img-upload__message  img-upload__message--loading">Загружаем...</div>
