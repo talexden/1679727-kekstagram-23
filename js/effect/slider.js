@@ -1,4 +1,5 @@
 import './nouislider.js';
+import {getFixedValue} from '../utils/utils.js';
 
 const createSlider = (element, {minValue, maxValue, stepValue, initialValue}) => {
   noUiSlider.create(element, {
@@ -11,7 +12,7 @@ const createSlider = (element, {minValue, maxValue, stepValue, initialValue}) =>
     connect: 'lower',
     format: {
       to: function (value) {
-        return Number.isInteger(value) ?  value.toFixed(0) : value.toFixed(1);
+        return getFixedValue(value);
       },
       from: function (value) {
         return parseFloat(value);

@@ -2,16 +2,18 @@ import {sendData} from '../server/api.js';
 import {UPLOAD_FORM} from '../constants.js';
 
 
-const setImageFormSubmit = (onSuccess, onError) => {
-  UPLOAD_FORM.addEventListener('submit', (evt) => {
-    evt.preventDefault();
+const onSubmitEvent = (onSuccess, onError) => function (evt) {
+  evt.preventDefault();
+  sendData(
+    () => onSuccess(),
+    () => onError(),
+    new FormData(evt.target),
+  );
+};
 
-    sendData(
-      () => onSuccess(),
-      () => onError(),
-      new FormData(evt.target),
-    );
-  });
+
+const setImageFormSubmit = (onSuccess, onError) => {
+  UPLOAD_FORM.addEventListener('submit', onSubmitEvent(onSuccess, onError));
 };
 
 

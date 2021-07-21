@@ -1,6 +1,8 @@
 import {INCOMING_SERVER_ADDRESS, OUTGOING_SERVER_ADDRESS} from '../constants.js';
+let picturesData;
 
-const getData = (onSuccess) => {
+const getData = (onSuccess, onFail) => {
+
   fetch(INCOMING_SERVER_ADDRESS)
     .then((response) => {
       if (response.ok) {
@@ -9,7 +11,8 @@ const getData = (onSuccess) => {
       throw new Error(`${response.status} — ${response.statusText}`);
     })
     .then((response) => response.json())
-    .then((picturesData) => {
+    .then((data) => {
+      picturesData = data;
       onSuccess(picturesData);
     })
     .catch((error) => {
@@ -42,5 +45,7 @@ const sendData = (onSuccess, onFail, body) => {
     });
 };
 
+const getPicturesData = () => picturesData;
 
-export {getData, sendData};
+
+export {getData, sendData, getPicturesData};

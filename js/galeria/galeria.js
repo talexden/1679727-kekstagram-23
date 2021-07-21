@@ -5,10 +5,10 @@ import {
   SOCIAL_COMMENTS_LOADER
 } from '../constants.js';
 
-import {isEscEvent, isEnterEvent} from '../utils.js';
+import {isEscEvent, isEnterEvent} from '../utils/utils.js';
 import {createBigPicture, showBigPicture, hideBigPicture} from './big-picture.js';
 import {createSocialComments, unhideComments, updateCommentsCount} from './comments.js';
-import {pictures} from './miniature.js';
+import {getPicturesData} from '../server/api.js';
 
 
 const renderSocialComments = () => {
@@ -56,9 +56,10 @@ const onClickMiniature = (evt) => {
 };
 
 
-// здесь function потому что эта функция используется выше
+// здесь function потому что эта функция вызывается выше
 function openBigPicture(dataIdx) {
-  createBigPicture(pictures[dataIdx]);
+  const picturesData = getPicturesData();
+  createBigPicture(picturesData[dataIdx]);
   showBigPicture();
   createSocialComments(COMMENT_SHOW_NUMBER);
 
@@ -71,7 +72,7 @@ function openBigPicture(dataIdx) {
 }
 
 
-// здесь function потому что эта функция используется выше
+// здесь function потому что эта функция вызывается выше
 function closeBigPicture() {
   hideBigPicture();
 

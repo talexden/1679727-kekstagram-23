@@ -8,7 +8,7 @@ import {
   HASHTAG_SEPARATOR
 } from '../constants.js';
 
-import {isArrayElementsMatch} from '../utils.js';
+import {isArrayElementsMatch} from '../utils/utils.js';
 
 const RE_HASHTAG = new RegExp(`^#[A-Za-zА-Яа-я0-9]{${HASHTAG_MIN_LENGHT - 1},${HASHTAG_MAX_LENGHT - 1}}$`);
 
