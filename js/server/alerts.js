@@ -1,5 +1,5 @@
 import './alerts-message.js';
-import {isEscEvent} from '../utils.js';
+import {isEscEvent} from '../utils/utils.js';
 
 let alert = document.querySelector('.alert');
 let alertWindow = alert.querySelector('div');
@@ -53,7 +53,7 @@ const onClickOutside = (evt) => {
 };
 
 
-// здесь function потому что эта функция используется выше
+// здесь function потому что эта функция вызывается выше
 function openAlert(element) {
   element.classList.remove('hidden');
   element.addEventListener('click', onButtonClickEvent);
@@ -62,7 +62,7 @@ function openAlert(element) {
 }
 
 
-// здесь function потому что эта функция используется выше
+// здесь function потому что эта функция вызывается выше
 function closeAlert(element) {
   element.classList.add('hidden');
   element.removeEventListener('click', onButtonClickEvent);

@@ -5,10 +5,8 @@ import {
   UPLOAD_FORM
 } from '../constants.js';
 
-import {isEscEvent} from '../utils.js';
+import {isEscEvent} from '../utils/utils.js';
 import {validityHashtagsString, validityDescription, resetHashtag, resetDescription} from './upload-form-validation.js';
-import {getData} from '../server/api.js';
-import {appendMiniatures} from '../galeria/miniature.js';
 import {showAlert} from '../server/alerts.js';
 import {resetEffects} from '../effect/effects.js';
 
@@ -55,7 +53,7 @@ const onEscPropagation = (evt) => {
 };
 
 
-// здесь function потому что эта функция используется выше
+// здесь function потому что эта функция вызывается выше
 function openUploadFormModal() {
   UPLOAD_FORM_MODAL.classList.remove('hidden');
   BODY.classList.add('modal-open');
@@ -63,7 +61,7 @@ function openUploadFormModal() {
 }
 
 
-// здесь function потому что эта функция используется выше
+// здесь function потому что эта функция вызывается выше
 function closeUploadFormModal() {
   resetUploadForm();
   UPLOAD_FORM_MODAL.classList.add('hidden');
