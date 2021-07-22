@@ -1,4 +1,6 @@
 import {INCOMING_SERVER_ADDRESS, OUTGOING_SERVER_ADDRESS} from '../constants.js';
+import {snowImageFilters} from '../gallery/filter-picture.js';
+
 let picturesData;
 
 const getData = (onSuccess, onFail) => {
@@ -13,11 +15,10 @@ const getData = (onSuccess, onFail) => {
     .then((response) => response.json())
     .then((data) => {
       picturesData = data;
+      snowImageFilters();
       onSuccess(picturesData);
     })
-    .catch((error) => {
-      // eslint-disable-next-line no-console
-      console.log(error);
+    .catch(() => {
       onFail();
     });
 };
@@ -38,9 +39,7 @@ const sendData = (onSuccess, onFail, body) => {
         throw new Error(`${response.status} — ${response.statusText}`);
       }
     })
-    .catch((error) => {
-      // eslint-disable-next-line no-console
-      console.log(error);
+    .catch(() => {
       onFail();
     });
 };

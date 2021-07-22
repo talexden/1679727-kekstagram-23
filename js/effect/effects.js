@@ -1,50 +1,50 @@
 import {
-  EFFECT_LEVEL_SLIDER,
-  EFFECT_LEVEL_VALUE,
+  effectLevelSlider,
+  effectLevelValue,
   EFFECTS,
-  EFFECTS_LIST,
-  IMG_UPLOAD_SCALE,
-  UPLOAD_EFFECT_LEVEL
+  effectsList,
+  imgUploadScale,
+  uploadEffectLevel
 } from '../constants.js';
 
 import {getFixedValue, isToggleHideElement} from '../utils/utils.js';
 import {createSlider, updateSlider} from './slider.js';
 import './nouislider.js';
 import {applyEffect, setImageStyle} from './filters.js';
-import {getScaleValue, resetScaleValue, scaleControlEvent} from './scale.js';
+import {getScaleValue, resetScaleValue, setScaleClick} from './scale.js';
 
-const noEffectRadio = EFFECTS_LIST.querySelector('#effect-none');
+const noEffectRadio = effectsList.querySelector('#effect-none');
 
 let checkedFilterName = 'none';
 
 
-createSlider(EFFECT_LEVEL_SLIDER, EFFECTS[checkedFilterName]);
+createSlider(effectLevelSlider, EFFECTS[checkedFilterName]);
 
 const resetEffects = () => {
   noEffectRadio.checked = true;
   checkedFilterName = 'none';
   applyEffect(checkedFilterName);
-  updateSlider(EFFECT_LEVEL_SLIDER, EFFECTS[checkedFilterName]);
+  updateSlider(effectLevelSlider, EFFECTS[checkedFilterName]);
   resetScaleValue();
 };
 
-EFFECTS_LIST.addEventListener('change', () => {
-  checkedFilterName = EFFECTS_LIST.querySelector('input[name="effect"]:checked').value;
+effectsList.addEventListener('change', () => {
+  checkedFilterName = effectsList.querySelector('input[name="effect"]:checked').value;
   applyEffect(checkedFilterName);
-  updateSlider(EFFECT_LEVEL_SLIDER, EFFECTS[checkedFilterName]);
+  updateSlider(effectLevelSlider, EFFECTS[checkedFilterName]);
 });
 
 
-const sliderUpdate = (_, handle, unencoded) => {
+const onSliderChange = (_, handle, unencoded) => {
   const sliderValue = getFixedValue(unencoded[handle]);
-  EFFECT_LEVEL_VALUE.value = sliderValue;
+  effectLevelValue.value = sliderValue;
   setImageStyle(EFFECTS[checkedFilterName], sliderValue, getScaleValue());
-  isToggleHideElement(UPLOAD_EFFECT_LEVEL, EFFECTS[checkedFilterName]);
+  isToggleHideElement(uploadEffectLevel, EFFECTS[checkedFilterName]);
 };
 
-EFFECT_LEVEL_SLIDER.noUiSlider.on('update', sliderUpdate);
+effectLevelSlider.noUiSlider.on('update', onSliderChange);
 
-IMG_UPLOAD_SCALE.addEventListener('click', scaleControlEvent);
+imgUploadScale.addEventListener('click', setScaleClick);
 
 
 export {resetEffects};

@@ -1,9 +1,9 @@
-import {BODY} from '../constants.js';
+import {body} from '../constants.js';
 
 
 const createAlert = (templateName, alertType) => {
-  const messageTemlate = document.querySelector(`#${templateName}`).content;
-  const messageNode = messageTemlate.cloneNode(true);
+  const messageTemplate = document.querySelector(`#${templateName}`).content;
+  const messageNode = messageTemplate.cloneNode(true);
   const message = messageNode.querySelector('section');
   const fragment = document.createDocumentFragment();
 
@@ -11,7 +11,7 @@ const createAlert = (templateName, alertType) => {
   message.classList.add('hidden');
   message.classList.add(`${alertType}-${templateName}`);
   fragment.appendChild(message);
-  BODY.appendChild(fragment);
+  body.appendChild(fragment);
 };
 
 

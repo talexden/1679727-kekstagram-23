@@ -1,11 +1,11 @@
-import {PICTURES} from '../constants.js';
+import {pictures} from '../constants.js';
 
 const pictureTemplate = document.querySelector('#picture').content;
 
 const clearMiniatures = () => {
-  const miniatures = PICTURES.querySelectorAll('.picture');
+  const miniatures = pictures.querySelectorAll('.picture');
 
-  miniatures.forEach((element) => PICTURES.removeChild(element));
+  miniatures.forEach((element) => pictures.removeChild(element));
 };
 
 
@@ -30,7 +30,7 @@ const appendMiniatures = (data) => {
 
   data.forEach((item) => fragment.appendChild(renderPicture(item)));
   clearMiniatures();
-  PICTURES.appendChild(fragment);
+  pictures.appendChild(fragment);
   return data;
 };
 
