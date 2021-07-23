@@ -1,6 +1,6 @@
 import {
-  SCALE_CONTROL_VALUE,
-  IMAGE_UPLOAD_PREVIEW,
+  scaleControlValue,
+  imageUploadPreview,
   MIN_SCALE,
   MAX_SCALE,
   SCALE_STEP,
@@ -9,12 +9,12 @@ import {
 
 
 const setScaleStyle = (value) => {
-  IMAGE_UPLOAD_PREVIEW.style = `transform: scale(${value})`;
+  imageUploadPreview.style = `transform: scale(${value})`;
 };
 
 let scaleValue = SCALE_DEFAULT;
 
-const scaleControlEvent = (evt) => {
+const onScaleClickEvent = (evt) => {
   const target = evt.target;
 
   if (target.classList.contains ('scale__control--smaller') && scaleValue > MIN_SCALE) {
@@ -25,7 +25,7 @@ const scaleControlEvent = (evt) => {
   }
   if (scaleValue < MIN_SCALE) {scaleValue = MIN_SCALE;}
   if (scaleValue > MAX_SCALE) {scaleValue = MAX_SCALE;}
-  SCALE_CONTROL_VALUE.value = `${scaleValue * 100}%`;
+  scaleControlValue.value = `${scaleValue * 100}%`;
   setScaleStyle(scaleValue);
 };
 
@@ -35,8 +35,8 @@ const getScaleValue = () => scaleValue;
 const resetScaleValue = () => {
   scaleValue = SCALE_DEFAULT;
   setScaleStyle(SCALE_DEFAULT);
-  SCALE_CONTROL_VALUE.value = `${scaleValue * 100}%`;
+  scaleControlValue.value = `${scaleValue * 100}%`;
 };
 
 
-export {scaleControlEvent, resetScaleValue, getScaleValue};
+export {onScaleClickEvent, resetScaleValue, getScaleValue};
