@@ -14,7 +14,7 @@ const setScaleStyle = (value) => {
 
 let scaleValue = SCALE_DEFAULT;
 
-const setScaleClick = (evt) => {
+const onScaleClickEvent = (evt) => {
   const target = evt.target;
 
   if (target.classList.contains ('scale__control--smaller') && scaleValue > MIN_SCALE) {
@@ -39,4 +39,4 @@ const resetScaleValue = () => {
 };
 
 
-export {setScaleClick, resetScaleValue, getScaleValue};
+export {onScaleClickEvent, resetScaleValue, getScaleValue};

@@ -11,7 +11,7 @@ import {getFixedValue, isToggleHideElement} from '../utils/utils.js';
 import {createSlider, updateSlider} from './slider.js';
 import './nouislider.js';
 import {applyEffect, setImageStyle} from './filters.js';
-import {getScaleValue, resetScaleValue, setScaleClick} from './scale.js';
+import {getScaleValue, resetScaleValue, onScaleClickEvent} from './scale.js';
 
 const noEffectRadio = effectsList.querySelector('#effect-none');
 
@@ -44,7 +44,7 @@ const onSliderChange = (_, handle, unencoded) => {
 
 effectLevelSlider.noUiSlider.on('update', onSliderChange);
 
-imgUploadScale.addEventListener('click', setScaleClick);
+imgUploadScale.addEventListener('click', onScaleClickEvent);
 
 
 export {resetEffects};

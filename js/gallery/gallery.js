@@ -6,11 +6,11 @@ import {
 } from '../constants.js';
 
 import {isEscEvent} from '../utils/utils.js';
-import {makeBigPicture, hideBigPicture} from './big-picture.js';
+import {hideBigPicture, showBigPicture, createBigPicture} from './big-picture.js';
 import {unhideComments, updateCommentsCount} from './comments.js';
 
 
-const renderSocialComments = () => {
+const onCommentsLoaderClick = () => {
   unhideComments(COMMENT_SHOW_NUMBER);
   updateCommentsCount();
 };
@@ -30,12 +30,21 @@ const closeBigPicture = () => {
 };
 
 
-const onClickMiniature = (evt) => {
-  makeBigPicture(evt);
+const onMiniatureClickEvent = (evt) => {
+  const target = evt.target.parentElement;
+  if (!target.classList.contains ('picture')) {
+    return;
+  }
+
+  evt.preventDefault();
+  const dataIdx = target.getAttribute('data-id');
+  createBigPicture(dataIdx);
+  showBigPicture();
   window.addEventListener('keydown', onEscBigPicture);
 };
 
-socialCommentsLoader.addEventListener('click', renderSocialComments);
+
+socialCommentsLoader.addEventListener('click', onCommentsLoaderClick);
 bigPictureCancel.addEventListener('click', closeBigPicture);
-pictures.addEventListener('click', onClickMiniature);
+pictures.addEventListener('click', onMiniatureClickEvent);
 

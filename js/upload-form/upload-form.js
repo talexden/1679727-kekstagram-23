@@ -27,13 +27,6 @@ const resetUploadForm = () => {
 };
 
 
-const closeUploadFormModal = () => {
-  resetUploadForm();
-  uploadFormModal.classList.add('hidden');
-  body.classList.remove('modal-open');
-};
-
-
 const openSuccessAlert = () => {
   closeUploadFormModal();
   showAlert('upload-success');
@@ -44,26 +37,34 @@ const openErrorAlert = () => {
   showAlert('upload-error');
 };
 
-const onEscKeydown = (evt) => {
+const onEscKeydownEvent = (evt) => {
   if (isEscEvent(evt)) {
     closeUploadFormModal();
-    window.removeEventListener('keydown', onEscKeydown);
   }
 };
 
 
-const onEscPropagation = (evt) => {
+//function declaration для снятия обработчика
+function closeUploadFormModal () {
+  resetUploadForm();
+  uploadFormModal.classList.add('hidden');
+  body.classList.remove('modal-open');
+  window.removeEventListener('keydown', onEscKeydownEvent);
+}
+
+
+const onEscPropagationEvent = (evt) => {
   if (isEscEvent(evt)) {
     evt.stopPropagation();
   }
 };
 
 
-function openUploadFormModal() {
+const openUploadFormModal = () => {
   uploadFormModal.classList.remove('hidden');
   body.classList.add('modal-open');
-  window.addEventListener('keydown', onEscKeydown);
-}
+  window.addEventListener('keydown', onEscKeydownEvent);
+};
 
 
 uploadInput.addEventListener('change', openUploadFormModal);
@@ -71,10 +72,10 @@ uploadFormCancel.addEventListener('click', closeUploadFormModal);
 
 
 hashtagInput.addEventListener('input', validityHashtagsString);
-hashtagInput.addEventListener('keydown', onEscPropagation);
+hashtagInput.addEventListener('keydown', onEscPropagationEvent);
 
 descriptionInput.addEventListener('input', validityDescription);
-descriptionInput.addEventListener('keydown', onEscPropagation);
+descriptionInput.addEventListener('keydown', onEscPropagationEvent);
 
 
 export {openSuccessAlert, openErrorAlert};

@@ -64,34 +64,11 @@ const hideBigPicture = () => {
 
 
 const createBigPicture = (dataIdx) => {
-  if (dataIdx) {
-    const picturesData = getPicturesData();
-    renderBigPicture(picturesData[dataIdx]);
-    createSocialComments(COMMENT_SHOW_NUMBER);
-    showBigPicture();
-  }
+  const picturesData = getPicturesData();
+
+  renderBigPicture(picturesData[dataIdx]);
+  createSocialComments(COMMENT_SHOW_NUMBER);
 };
 
 
-const getBigPictureIdx = (evt) => {
-  let target = evt.target;
-
-  if (target.classList.contains ('picture__img')) {
-    target = target.parentElement;
-  }
-
-  if (target.classList.contains ('picture')) {
-    const dataIdx = target.getAttribute('data-id');
-
-    evt.preventDefault();
-    return(dataIdx);
-  }
-};
-
-
-const makeBigPicture = (evt) => {
-  createBigPicture(getBigPictureIdx(evt));
-};
-
-
-export {hideBigPicture, makeBigPicture};
+export {hideBigPicture, showBigPicture, createBigPicture};
