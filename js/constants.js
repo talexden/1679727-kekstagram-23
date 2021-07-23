@@ -1,23 +1,3 @@
-const body = document.querySelector('body');
-const pictures = document.querySelector('.pictures');
-const bigPicture = document.querySelector('.big-picture');
-const bigPictureCancel = bigPicture.querySelector('.big-picture__cancel');
-const socialComments = bigPicture.querySelector('.social__comments');
-const socialCommentsLoader = bigPicture.querySelector('.social__comments-loader');
-const commentsCountAll = bigPicture.querySelector('.comments-count__all');
-const uploadForm = document.querySelector('.img-upload__form');
-const uploadInput = uploadForm.querySelector('.img-upload__input');
-const imgUploadScale = uploadForm.querySelector('.img-upload__scale');
-const scaleControlValue = imgUploadScale.querySelector('.scale__control--value');
-const imageUploadPreview = uploadForm.querySelector('.img-upload__preview img');
-const effectsList = uploadForm.querySelector('.effects__list');
-const uploadEffectLevel = uploadForm.querySelector('.img-upload__effect-level');
-const effectLevelValue = uploadEffectLevel.querySelector('.effect-level__value');
-const effectLevelSlider = uploadEffectLevel.querySelector('.effect-level__slider');
-const hashtagInput = uploadForm.querySelector('.text__hashtags');
-const descriptionInput = uploadForm.querySelector('.text__description');
-const imageFilters = document.querySelector('.img-filters');
-
 const AVATAR_WIDTH = 35;
 const AVATAR_HEIGHT = 35;
 const MIN_SCALE = 0.25;
@@ -92,6 +72,28 @@ const EFFECTS = {
     postfix: '',
   },
 };
+
+
+const body = document.querySelector('body');
+const pictures = document.querySelector('.pictures');
+const bigPicture = document.querySelector('.big-picture');
+const bigPictureCancel = bigPicture.querySelector('.big-picture__cancel');
+const socialComments = bigPicture.querySelector('.social__comments');
+const socialCommentsLoader = bigPicture.querySelector('.social__comments-loader');
+const commentsCountAll = bigPicture.querySelector('.comments-count__all');
+const uploadForm = document.querySelector('.img-upload__form');
+const uploadInput = uploadForm.querySelector('.img-upload__input');
+const imgUploadScale = uploadForm.querySelector('.img-upload__scale');
+const scaleControlValue = imgUploadScale.querySelector('.scale__control--value');
+const imageUploadPreview = uploadForm.querySelector('.img-upload__preview img');
+const effectsList = uploadForm.querySelector('.effects__list');
+const uploadEffectLevel = uploadForm.querySelector('.img-upload__effect-level');
+const effectLevelValue = uploadEffectLevel.querySelector('.effect-level__value');
+const effectLevelSlider = uploadEffectLevel.querySelector('.effect-level__slider');
+const hashtagInput = uploadForm.querySelector('.text__hashtags');
+const descriptionInput = uploadForm.querySelector('.text__description');
+const imageFilters = document.querySelector('.img-filters');
+
 
 export {
   body,
